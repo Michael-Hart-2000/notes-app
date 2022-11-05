@@ -11,17 +11,10 @@ class NoteAPI(serializerType: Serializer) {
         return notes.add(note)
     }
 
-    fun listAllNotes(): String {
-        return if (notes.isEmpty()) {
-            "No notes stored"
-        } else {
-            var listofNotes = ""
-            for (i in notes.indices) {
-                listofNotes += "${i}: ${notes[i]} \n"
-            }
-            listofNotes
-        }
-    }
+    fun listAllNotes(): String =
+        if  (notes.isEmpty()) "No notes stored"
+        else notes.joinToString (separator = "\n") { note ->
+            notes.indexOf(note).toString() + ": " + note.toString() }
 
     fun listActiveNotes(): String {
         return if (numberOfActiveNotes() == 0) {
