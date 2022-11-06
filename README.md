@@ -26,7 +26,7 @@ The purpose of the app was to understand the basics of Kotlin and its syntax as 
 The purpose was to understand the GitHub workflow, creating issues, linking to pull requests, merging pull requests, creating and deleting branches, closing issues, Git-> Fetch, and remote master branch Checkout.
 
 ## Getting Started with the Project
-Users can get started by downloading the employee app repository, and running the main.kt file found in the src folder.
+Users can get started by downloading the notes app repository, and running the main.kt file found in the src folder.
 
 A menu will be displayed and the numbers on your keyboard allow you to navigate through the apps functions.
 
