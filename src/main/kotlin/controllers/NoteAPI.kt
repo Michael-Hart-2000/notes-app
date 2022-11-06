@@ -3,6 +3,10 @@ package controllers
 import models.Note
 import persistence.Serializer
 
+val yellow = "\u001B[33m"
+val red = "\u001b[31m"
+val green = "\u001B[32m"
+
 class NoteAPI(serializerType: Serializer) {
     private var serializer: Serializer = serializerType
     private var notes = ArrayList<Note>()
@@ -12,15 +16,15 @@ class NoteAPI(serializerType: Serializer) {
     }
 
     fun listAllNotes(): String =
-        if  (notes.isEmpty()) "No notes stored"
+        if  (notes.isEmpty()) red + "No notes stored"
         else formatListString(notes)
 
     fun listActiveNotes(): String =
-        if  (numberOfActiveNotes() == 0)  "No active notes stored"
+        if  (numberOfActiveNotes() == 0) red +  "No active notes stored"
         else formatListString(notes.filter { note -> !note.isNoteArchived})
 
     fun listArchivedNotes(): String =
-        if  (numberOfArchivedNotes() == 0) "No archived notes stored"
+        if  (numberOfArchivedNotes() == 0) red + "No archived notes stored"
         else formatListString(notes.filter { note -> note.isNoteArchived})
 
     fun numberOfArchivedNotes(): Int = notes.count { note: Note -> note.isNoteArchived }
@@ -28,10 +32,10 @@ class NoteAPI(serializerType: Serializer) {
     fun numberOfActiveNotes(): Int = notes.count{note: Note -> !note.isNoteArchived}
 
     fun listNotesBySelectedPriority(priority: Int): String =
-        if (notes.isEmpty()) "No notes stored"
+        if (notes.isEmpty()) red + "No notes stored"
         else {
             val listOfNotes = formatListString(notes.filter{ note -> note.notePriority == priority})
-            if (listOfNotes.equals("")) "No notes with priority: $priority"
+            if (listOfNotes.equals("")) red + "No notes with priority: $priority"
             else "${numberOfNotesByPriority(priority)} notes with priority $priority: $listOfNotes"
         }
 
