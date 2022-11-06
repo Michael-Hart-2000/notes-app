@@ -12,20 +12,21 @@ import java.lang.System.exit
 
 fun mainMenu() : Int {
     return ScannerInput.readNextInt(""" 
-         > ----------------------------------
-         > |        NOTE KEEPER APP         |
-         > ----------------------------------
-         > | NOTE MENU                      |
-         > |   1) Add a note                |
-         > |   2) List all notes            |
-         > |   3) Update a note             |
-         > |   4) Remove a note             |
-         > |   5) Archive a note            |
-         > ----------------------------------
-         > |   20) Save notes               |
-         > |   21) Load notes               |
-         > |   0) Exit                      |
-         > ----------------------------------
+         > --------------------------------------
+         > |           NOTE KEEPER APP          |
+         > --------------------------------------
+         > | NOTE MENU                          |
+         > |   1) Add a note                    |
+         > |   2) List all notes                |
+         > |   3) Update a note                 |
+         > |   4) Remove a note                 |
+         > |   5) Archive a note                |
+         > |   6) Search note(by description)   |
+         > --------------------------------------
+         > |   20) Save notes                   |
+         > |   21) Load notes                   |
+         > |   0) Exit                          |
+         > --------------------------------------
          > ==>> """.trimMargin(">"))
 }
 
@@ -38,6 +39,7 @@ fun runMenu() {
             3  -> updateNote()
             4  -> deleteNote()
             5 -> archiveNote()
+            6 -> searchNotes()
             20  -> save()
             21  -> load()
             0  -> exitApp()
@@ -166,6 +168,16 @@ fun listArchivedNotes() {
 fun exitApp(){
     println("Exiting...bye")
     exit(0)
+}
+
+fun searchNotes() {
+    val searchTitle = readNextLine("Enter the description to search by: ")
+    val searchResults = noteAPI.searchByTitle(searchTitle)
+    if (searchResults.isEmpty()) {
+        println("No notes found")
+    } else {
+        println(searchResults)
+    }
 }
 
 private val logger = KotlinLogging.logger {}
