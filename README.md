@@ -23,7 +23,7 @@ Will persist the notes into different formats (XML and JSON).
 ## Project Purpose
 The purpose of the app was to understand the basics of Kotlin and its syntax as well as learn how to build an app alongside github
 
-The purpose was to understand the GitHub workflow, createing issues, linking to pull requests, merging pull requests, creating and deleting branches, closing issues, Git-> Fetch, and remote master branch Checkout.
+The purpose was to understand the GitHub workflow, creating issues, linking to pull requests, merging pull requests, creating and deleting branches, closing issues, Git-> Fetch, and remote master branch Checkout.
 
 ## Getting Started with the Project
 Users can get started by downloading the employee app repository, and running the main.kt file found in the src folder.
